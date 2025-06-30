@@ -1,21 +1,22 @@
 """.
-    Global dependency: Crate imported with crate.workspace=true
+    ```
+    Global dependency: Crate specified in the root Cargo.toml and imported with crate.workspace=true
     Specific dependency: Crate imported using crate = "x.x.x" (or crate = {version ="x.x.x"})
-
-
-    This script ensure that:
-        1) Every global dependency used by at least GLOBAL_DEP_THRESHOLD package(s)
-        2) No global dependency is imported as specific dependency
-        3) Every dependency used by 2 or more packages is a global dependency
-            (no double import which could be bad, I.E different versions)
-        4) Every dependency of every package is used (no unused imports)
-
-    Requirements:
-        rg (https://github.com/BurntSushi/ripgrep)
-        a terminal that accepts ANSI codes
+    ```
+    
+    1. Every global dependency used by at least GLOBAL_DEP_THRESHOLD(default 2) package(s)
+    2. No global dependency is imported as specific dependency
+    3. Every dependency used by 2 or more packages is a global dependency  
+           (no double import which could be bad, I.E different versions)
+    4. Every dependency of every package is used (no unused imports)
+    
+    Requirements:  
+    - rg (https://github.com/BurntSushi/ripgrep)  
+    - a terminal that accepts ANSI codes  
 
     Author: Bowarc
 """
+
 
 import os
 import subprocess
